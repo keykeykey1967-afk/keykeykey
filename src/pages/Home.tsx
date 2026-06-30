@@ -16,19 +16,23 @@ export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 space-y-8">
       {/* Hero */}
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600 rounded-2xl text-white p-8 md:p-12">
-        <div className="max-w-2xl">
+      <div className="bg-gradient-to-r from-blue-800 to-blue-700 rounded-2xl text-white p-8 md:p-12 relative overflow-hidden">
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-5 select-none pointer-events-none hidden md:block">
+          <span style={{ fontSize: '180px', fontFamily: 'serif', color: '#c9a84c' }}>徳</span>
+        </div>
+        <div className="max-w-2xl relative">
+          <div className="text-gold-400 text-sm tracking-[0.3em] mb-2 font-medium">報徳学園 同窓会</div>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
-            ようこそ、同窓会アプリへ
+            懐かしい仲間と、また会おう。
           </h1>
           <p className="text-blue-100 text-lg mb-6">
-            懐かしい仲間と繋がり、新しい縁を広げましょう。
-            卒業生同士の交流・イベント情報をここで管理できます。
+            報徳学園の卒業生が繋がるプラットフォームです。
+            同期・先輩・後輩との交流やイベント情報をまとめて管理できます。
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
               to="/members"
-              className="bg-white text-blue-800 px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              className="bg-gold-500 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-gold-600 transition-colors shadow-sm"
             >
               メンバーを探す
             </Link>

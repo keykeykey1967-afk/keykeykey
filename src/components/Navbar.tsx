@@ -7,6 +7,26 @@ const navItems = [
   { path: '/news', label: 'お知らせ' },
 ]
 
+function SchoolEmblem({ size = 36 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="16" fill="#101c54" stroke="#c9a84c" strokeWidth="1.8" />
+      <circle cx="18" cy="18" r="12.5" fill="none" stroke="#c9a84c" strokeWidth="0.6" opacity="0.7" />
+      <text
+        x="18"
+        y="23.5"
+        textAnchor="middle"
+        fontSize="14"
+        fontFamily="'Hiragino Mincho ProN', 'Yu Mincho', serif"
+        fill="#c9a84c"
+        fontWeight="bold"
+      >
+        徳
+      </text>
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const location = useLocation()
 
@@ -14,9 +34,12 @@ export default function Navbar() {
     <nav className="bg-blue-800 text-white shadow-lg">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-            <span className="text-2xl">🎓</span>
-            <span>同窓会アプリ</span>
+          <Link to="/" className="flex items-center gap-2.5 font-bold">
+            <SchoolEmblem size={36} />
+            <div className="leading-tight">
+              <div className="text-xs text-gold-400 tracking-widest font-normal">報徳学園</div>
+              <div className="text-base font-bold tracking-wide">同窓会</div>
+            </div>
           </Link>
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
