@@ -37,8 +37,8 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-2.5 font-bold">
             <SchoolEmblem size={36} />
             <div className="leading-tight">
-              <div className="text-xs text-gold-400 tracking-widest font-normal">報徳学園</div>
-              <div className="text-base font-bold tracking-wide">同窓会</div>
+              <div className="text-xs text-gold-400 tracking-widest font-normal">報友会</div>
+              <div className="text-base font-bold tracking-wide">東京支部</div>
             </div>
           </Link>
           <div className="hidden md:flex items-center gap-1">

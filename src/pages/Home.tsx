@@ -21,12 +21,12 @@ export default function Home() {
           <span style={{ fontSize: '180px', fontFamily: 'serif', color: '#c9a84c' }}>徳</span>
         </div>
         <div className="max-w-2xl relative">
-          <div className="text-gold-400 text-sm tracking-[0.3em] mb-2 font-medium">報徳学園 同窓会</div>
+          <div className="text-gold-400 text-sm tracking-[0.3em] mb-2 font-medium">報友会東京支部</div>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
             懐かしい仲間と、また会おう。
           </h1>
           <p className="text-blue-100 text-lg mb-6">
-            報徳学園の卒業生が繋がるプラットフォームです。
+            報友会東京支部の会員が繋がるプラットフォームです。
             同期・先輩・後輩との交流やイベント情報をまとめて管理できます。
           </p>
           <div className="flex flex-wrap gap-3">

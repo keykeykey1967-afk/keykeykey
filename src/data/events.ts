@@ -3,17 +3,17 @@ import { Event } from '../types'
 export const events: Event[] = [
   {
     id: '1',
-    title: '2024年度 大同窓会',
+    title: '2024年度 報友会東京支部 大会',
     date: '2024-11-23',
     time: '17:00',
     location: '東京プリンスホテル 鳳凰の間',
     description:
-      '年に一度の大同窓会です。今年は卒業10周年、20周年、30周年の節目の方々を特に歓迎します。懐かしい仲間たちと再会し、近況報告や交流を深めましょう。会費には料理・飲み放題が含まれます。',
+      '報友会東京支部の年次大会です。今年は卒業10周年、20周年、30周年の節目の方々を特に歓迎します。懐かしい仲間たちと再会し、近況報告や交流を深めましょう。会費には料理・飲み放題が含まれます。',
     capacity: 200,
     attendees: 143,
     category: 'reunion',
     image: '🎉',
-    organizer: '同窓会事務局',
+    organizer: '報友会東京支部 事務局',
   },
   {
     id: '2',
@@ -31,7 +31,7 @@ export const events: Event[] = [
   },
   {
     id: '3',
-    title: '夏の同窓会BBQ大会',
+    title: '夏の報友会BBQ大会',
     date: '2024-08-10',
     time: '11:00',
     location: '○○公園 バーベキューエリア',
@@ -45,7 +45,7 @@ export const events: Event[] = [
   },
   {
     id: '4',
-    title: '同窓会ゴルフコンペ',
+    title: '報友会ゴルフコンペ',
     date: '2024-10-05',
     time: '08:00',
     location: '○○カントリークラブ',

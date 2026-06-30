@@ -24,7 +24,7 @@ export default function Events() {
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900 mb-1">イベント</h1>
         <p className="text-gray-500">
-          同窓会・交流会・セミナーなどのイベント情報
+          報友会東京支部のイベント・交流会・セミナー情報
         </p>
       </div>
 
