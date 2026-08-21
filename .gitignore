@@ -1,0 +1,8 @@
+node_modules
+dist
+
+# alumni-news agent: キャッシュは除外、レポートは追跡
+agents/alumni-news/data/seen_articles.json
+agents/alumni-news/data/__pycache__/
+agents/alumni-news/__pycache__/
+agents/alumni-news/*.pyc
