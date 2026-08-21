@@ -235,20 +235,19 @@ def mock_articles() -> list[Article]:
             field="野球 ／ 元プロ野球選手・野球解説者",
         ),
         Article(
-            title="報徳学園OB・坂本龍一氏追悼展、東京都現代美術館で開催中",
-            url="https://art.example.com/sakamoto/20260812-memorial",
-            source="朝日新聞デジタル",
+            title="報徳学園OBの早大大学院生・中村健氏、量子コンピュータ研究で文科省若手賞",
+            url="https://education.example.com/waseda/20260812-nakamura",
+            source="日本教育新聞",
             published=now - timedelta(days=9),
             snippet=(
-                "世界的な音楽家・坂本龍一氏（報徳学園出身）の業績を振り返る追悼展示が"
-                "東京都現代美術館で開催されており、国内外から多くの来場者を集めている。"
-                "YMO結成から映画音楽、インスタレーションまで50年以上の創作活動を"
-                "アーカイブ映像と楽器で体感できる構成となっている。"
+                "早稲田大学大学院先進理工学研究科の中村健氏（報徳学園出身・博士課程2年）が"
+                "量子誤り訂正アルゴリズムの研究で令和8年度文部科学大臣賞（若手研究者部門）を受賞した。"
+                "中村氏は「報徳の『積小為大』の精神で一歩一歩研究を積み上げてきた」とコメントした。"
             ),
-            kanto_score=_calc_kanto_score("東京"),
-            person_name="坂本龍一",
-            person_year="1966年卒（推定）",
-            field="音楽 ／ 作曲家・ピアニスト（YMO）",
+            kanto_score=_calc_kanto_score("早稲田大学 東京"),
+            person_name="中村 健（仮名・デモ用）",
+            person_year="2020年卒（推定）",
+            field="理工学 ／ 量子コンピュータ研究",
         ),
         Article(
             title="法政大学陸上競技部・西岡竜平選手（報徳学園出身）、関東インカレ5000mで3位入賞",
