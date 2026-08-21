@@ -173,32 +173,95 @@ def collect_articles() -> list[Article]:
 
 
 def mock_articles() -> list[Article]:
-    """テスト・デモ用のモック記事"""
+    """テスト・デモ用のモック記事（現実的なサンプル）"""
     from datetime import timedelta
     now = datetime.now(timezone.utc)
     return [
         Article(
-            title="報徳学園OBの田中選手が早稲田大学野球部で活躍",
-            url="https://example.com/article/1",
-            source="スポーツ新聞",
-            published=now - timedelta(days=2),
-            snippet="報徳学園出身の田中選手が早稲田大学野球部の主力として春季リーグで好成績を収めている。",
-            kanto_score=_calc_kanto_score("早稲田大学 東京"),
-        ),
-        Article(
-            title="報徳学園卒の研究者が東京大学でAI研究に従事",
-            url="https://example.com/article/2",
-            source="教育ニュース",
-            published=now - timedelta(days=5),
-            snippet="報徳学園を卒業後、東京大学大学院に進学した山田氏が最先端のAI研究に取り組んでいる。",
-            kanto_score=_calc_kanto_score("東京大学 東京"),
-        ),
-        Article(
-            title="報徳学園のOBが兵庫県で起業家として活躍",
-            url="https://example.com/article/3",
-            source="地方経済紙",
+            title="報徳学園出身の渡辺投手、慶應義塾大学野球部でリーグ最多奪三振",
+            url="https://sportsnews.example.com/baseball/20260818-waseda",
+            source="スポーツ報知",
             published=now - timedelta(days=3),
-            snippet="報徳学園出身の起業家が兵庫県内でスタートアップを設立し、地域経済の活性化に貢献している。",
+            snippet=(
+                "慶應義塾大学野球部の渡辺投手（報徳学園出身・3年）が東京六大学秋季リーグ開幕節で"
+                "先発完投し9奪三振を記録した。昨秋のリーグ戦から通算奪三振数は48となり、"
+                "現役選手でトップに立った。「報徳で鍛えた制球力が今に生きている」と話した。"
+            ),
+            kanto_score=_calc_kanto_score("慶應義塾大学 東京 六大学"),
+        ),
+        Article(
+            title="早稲田大学理工学術院・中村准教授（報徳学園卒）が量子コンピュータ研究で文科省賞受賞",
+            url="https://education.example.com/science/20260815-nakamura",
+            source="日本教育新聞",
+            published=now - timedelta(days=6),
+            snippet=(
+                "早稲田大学先進理工学部の中村健一准教授（報徳学園高校→東京大学大学院）が"
+                "量子誤り訂正アルゴリズムの研究で令和8年度文部科学大臣賞（若手研究者部門）を受賞した。"
+                "中村准教授は「報徳の『積小為大』の精神で一歩一歩研究を積み上げてきた」とコメントした。"
+            ),
+            kanto_score=_calc_kanto_score("早稲田大学 東京大学 東京"),
+        ),
+        Article(
+            title="明治大学ラグビー部、報徳学園出身の田所主将率いて全国大学選手権8強",
+            url="https://rugby.example.com/university/20260812-meiji",
+            source="ラグビーマガジン",
+            published=now - timedelta(days=9),
+            snippet=(
+                "明治大学ラグビー部主将・田所龍斗選手（報徳学園出身・4年）が"
+                "全国大学選手権準々決勝でチームを牽引し8強入りを果たした。"
+                "田所主将は高校時代から全国屈指のフランカーとして知られ、"
+                "大学でもキャプテンシーと突破力でチームを引っ張っている。"
+                "卒業後はトップリーグへの進路が内定している。"
+            ),
+            kanto_score=_calc_kanto_score("明治大学 東京"),
+        ),
+        Article(
+            title="東京工業大学院生・鈴木氏（報徳学園卒）が国際ロボコンで金賞",
+            url="https://tech.example.com/robotics/20260810-suzuki",
+            source="産経新聞デジタル",
+            published=now - timedelta(days=11),
+            snippet=(
+                "東京工業大学大学院の鈴木翔太氏（報徳学園出身）が率いるチームが"
+                "国際ロボットコンテスト「RoboCup 2026 Bangkok」の自律移動部門で金賞を獲得した。"
+                "鈴木氏は「中高時代に科学部で培ったものづくりの基礎が原点」と語った。"
+            ),
+            kanto_score=_calc_kanto_score("東京工業大学 東京"),
+        ),
+        Article(
+            title="報徳学園OBの起業家・松本氏が神戸でフードテックスタートアップを設立",
+            url="https://startup.example.com/kobe/20260808-matsumoto",
+            source="神戸新聞",
+            published=now - timedelta(days=13),
+            snippet=(
+                "報徳学園出身の松本誠司氏（34）が神戸市内でフードテクノロジー企業「Hotoku Foods」を設立した。"
+                "同社は農業廃棄物を活用した代替タンパク質の製造技術を開発しており、"
+                "設立初年度からベンチャーキャピタルより3億円の資金調達に成功した。"
+            ),
             kanto_score=0,
+        ),
+        Article(
+            title="法政大学陸上競技部・伊藤選手（報徳学園出身）、関東インカレ5000mで3位入賞",
+            url="https://athletics.example.com/kanto/20260805-ito",
+            source="月刊陸上競技",
+            published=now - timedelta(days=16),
+            snippet=(
+                "関東学生陸上競技連盟主催の関東インカレにおいて、法政大学陸上競技部の"
+                "伊藤涼太選手（報徳学園出身・2年）が5000m決勝で13分42秒の自己ベストを更新し3位に入賞した。"
+                "報徳学園時代は都大路（全国高校駅伝）でも区間賞を獲得している実力者。"
+            ),
+            kanto_score=_calc_kanto_score("法政大学 関東 東京"),
+        ),
+        Article(
+            title="報徳学園同窓会（関東支部）が8月例会を開催、卒業生100名超が参加",
+            url="https://alumni.example.com/kanto/20260803-meeting",
+            source="報徳学園同窓会報",
+            published=now - timedelta(days=18),
+            snippet=(
+                "報徳学園同窓会関東支部（報友会東京支部）は8月3日に都内で例会を開催し、"
+                "卒業生・在校生保護者を含む105名が参加した。懇親会では首都圏で活躍する"
+                "若手卒業生による講演も行われ、大学・社会人問わず報徳ネットワークの"
+                "強固さを示す会となった。"
+            ),
+            kanto_score=_calc_kanto_score("関東 東京"),
         ),
     ]
