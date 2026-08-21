@@ -24,12 +24,14 @@ def _article_block(art, summary: str, run_date: str) -> str:
         f"- **日付**: {date_str}",
         f"- **出典**: [{art.source or art.url}]({art.url})",
         f"- **収集日**: {run_date}",
-        "",
-        summary,
-        "",
-        "---",
-        "",
     ]
+    if getattr(art, "person_name", ""):
+        lines.append(f"- **OB氏名**: {art.person_name}")
+    if getattr(art, "person_year", ""):
+        lines.append(f"- **卒業年**: {art.person_year}")
+    if getattr(art, "field", ""):
+        lines.append(f"- **分野**: {art.field}")
+    lines += ["", summary, "", "---", ""]
     return "\n".join(lines)
 
 

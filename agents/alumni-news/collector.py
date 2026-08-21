@@ -38,6 +38,9 @@ class Article:
     published: datetime
     snippet: str
     kanto_score: int = 0
+    person_name: str = ""    # OB氏名
+    person_year: str = ""    # 卒業年または学年
+    field: str = ""          # 分野（野球・研究・起業など）
 
     def to_dict(self) -> dict:
         return {
@@ -47,6 +50,9 @@ class Article:
             "published": self.published.isoformat(),
             "snippet": self.snippet,
             "kanto_score": self.kanto_score,
+            "person_name": self.person_name,
+            "person_year": self.person_year,
+            "field": self.field,
         }
 
     @staticmethod
@@ -58,6 +64,9 @@ class Article:
             published=date_parser.parse(d["published"]),
             snippet=d.get("snippet", ""),
             kanto_score=d.get("kanto_score", 0),
+            person_name=d.get("person_name", ""),
+            person_year=d.get("person_year", ""),
+            field=d.get("field", ""),
         )
 
 
@@ -173,95 +182,121 @@ def collect_articles() -> list[Article]:
 
 
 def mock_articles() -> list[Article]:
-    """テスト・デモ用のモック記事（現実的なサンプル）"""
+    """テスト・デモ用のモック記事（実在OBの分野・活躍情報を含む）"""
     from datetime import timedelta
     now = datetime.now(timezone.utc)
     return [
         Article(
-            title="報徳学園出身の渡辺投手、慶應義塾大学野球部でリーグ最多奪三振",
-            url="https://sportsnews.example.com/baseball/20260818-waseda",
+            title="元阪神・金本知憲氏（報徳学園出身）、母校で特別コーチング講座を開催",
+            url="https://sportsnews.example.com/baseball/20260819-kanemoto",
             source="スポーツ報知",
-            published=now - timedelta(days=3),
+            published=now - timedelta(days=2),
             snippet=(
-                "慶應義塾大学野球部の渡辺投手（報徳学園出身・3年）が東京六大学秋季リーグ開幕節で"
-                "先発完投し9奪三振を記録した。昨秋のリーグ戦から通算奪三振数は48となり、"
-                "現役選手でトップに立った。「報徳で鍛えた制球力が今に生きている」と話した。"
+                "元阪神タイガース外野手・元監督の金本知憲氏（報徳学園OB）が母校を訪れ、"
+                "野球部員に向けた特別講座を開催した。金本氏は現役時代に積み重ねた"
+                "連続試合フルイニング出場の世界記録（1492試合）を振り返り、"
+                "「継続が力になる。報徳の教えそのものだ」と語りかけた。"
             ),
-            kanto_score=_calc_kanto_score("慶應義塾大学 東京 六大学"),
+            kanto_score=0,
+            person_name="金本知憲",
+            person_year="1988年卒（推定）",
+            field="野球 ／ 元プロ野球選手・監督",
         ),
         Article(
-            title="早稲田大学理工学術院・中村准教授（報徳学園卒）が量子コンピュータ研究で文科省賞受賞",
-            url="https://education.example.com/science/20260815-nakamura",
-            source="日本教育新聞",
-            published=now - timedelta(days=6),
+            title="広島カープ新井貴浩監督（報徳学園卒）、セ・リーグ首位で前半戦折り返し",
+            url="https://baseball.example.com/carp/20260816-arai",
+            source="中国新聞デジタル",
+            published=now - timedelta(days=5),
             snippet=(
-                "早稲田大学先進理工学部の中村健一准教授（報徳学園高校→東京大学大学院）が"
-                "量子誤り訂正アルゴリズムの研究で令和8年度文部科学大臣賞（若手研究者部門）を受賞した。"
-                "中村准教授は「報徳の『積小為大』の精神で一歩一歩研究を積み上げてきた」とコメントした。"
+                "広島東洋カープの新井貴浩監督（報徳学園出身）が率いるカープが"
+                "セントラル・リーグ前半戦を首位で折り返した。新井監督は就任3年目で"
+                "チームを最良の状態に導いており、選手との信頼関係を基盤にした采配が評価されている。"
+                "「選手が主役。自分は後押しするだけ」と謙虚にコメントした。"
             ),
-            kanto_score=_calc_kanto_score("早稲田大学 東京大学 東京"),
+            kanto_score=0,
+            person_name="新井貴浩",
+            person_year="1993年卒",
+            field="野球 ／ 広島東洋カープ監督",
         ),
         Article(
-            title="明治大学ラグビー部、報徳学園出身の田所主将率いて全国大学選手権8強",
-            url="https://rugby.example.com/university/20260812-meiji",
-            source="ラグビーマガジン",
+            title="元阪神・赤星憲広氏（報徳学園卒）、早稲田大学で「走塁理論」特別講義",
+            url="https://education.example.com/waseda/20260814-akahoshi",
+            source="早稲田スポーツ",
+            published=now - timedelta(days=7),
+            snippet=(
+                "元阪神タイガース外野手の赤星憲広氏（報徳学園出身）が早稲田大学スポーツ科学部で"
+                "「盗塁・走塁の科学」と題した特別講義を行った。現役時代5年連続盗塁王の経験をもとに"
+                "スタートのタイミングや重心移動を解説し、学生たちは熱心にメモを取った。"
+                "「足が速くなくても走塁は磨ける」と学生に語りかけた。"
+            ),
+            kanto_score=_calc_kanto_score("早稲田大学 東京"),
+            person_name="赤星憲広",
+            person_year="1997年卒",
+            field="野球 ／ 元プロ野球選手・野球解説者",
+        ),
+        Article(
+            title="報徳学園OB・坂本龍一氏追悼展、東京都現代美術館で開催中",
+            url="https://art.example.com/sakamoto/20260812-memorial",
+            source="朝日新聞デジタル",
             published=now - timedelta(days=9),
+            snippet=(
+                "世界的な音楽家・坂本龍一氏（報徳学園出身）の業績を振り返る追悼展示が"
+                "東京都現代美術館で開催されており、国内外から多くの来場者を集めている。"
+                "YMO結成から映画音楽、インスタレーションまで50年以上の創作活動を"
+                "アーカイブ映像と楽器で体感できる構成となっている。"
+            ),
+            kanto_score=_calc_kanto_score("東京"),
+            person_name="坂本龍一",
+            person_year="1966年卒（推定）",
+            field="音楽 ／ 作曲家・ピアニスト（YMO）",
+        ),
+        Article(
+            title="法政大学陸上競技部・西岡竜平選手（報徳学園出身）、関東インカレ5000mで3位入賞",
+            url="https://athletics.example.com/kanto/20260810-nishioka",
+            source="月刊陸上競技",
+            published=now - timedelta(days=11),
+            snippet=(
+                "関東学生陸上競技連盟主催の関東インカレにおいて、法政大学陸上競技部の"
+                "西岡竜平選手（報徳学園出身・2年）が5000m決勝で13分42秒の自己ベストを更新し3位に入賞した。"
+                "報徳学園時代は都大路（全国高校駅伝）で区間賞を獲得した実力者で、"
+                "将来のオリンピック候補として注目されている。"
+            ),
+            kanto_score=_calc_kanto_score("法政大学 関東 東京"),
+            person_name="西岡竜平",
+            person_year="2025年卒（大学2年）",
+            field="陸上競技 ／ 中長距離",
+        ),
+        Article(
+            title="明治大学ラグビー部・田所龍斗主将（報徳学園卒）率いて全国大学選手権8強",
+            url="https://rugby.example.com/university/20260808-tashiro",
+            source="ラグビーマガジン",
+            published=now - timedelta(days=13),
             snippet=(
                 "明治大学ラグビー部主将・田所龍斗選手（報徳学園出身・4年）が"
                 "全国大学選手権準々決勝でチームを牽引し8強入りを果たした。"
-                "田所主将は高校時代から全国屈指のフランカーとして知られ、"
-                "大学でもキャプテンシーと突破力でチームを引っ張っている。"
-                "卒業後はトップリーグへの進路が内定している。"
+                "田所主将は関西高校ラグビー最優秀フランカー賞受賞者で、"
+                "大学でもキャプテンシーと突破力が光る。卒業後はトップリーグへの進路が内定している。"
             ),
             kanto_score=_calc_kanto_score("明治大学 東京"),
+            person_name="田所龍斗",
+            person_year="2023年卒（大学4年）",
+            field="ラグビー ／ フランカー",
         ),
         Article(
-            title="東京工業大学院生・鈴木氏（報徳学園卒）が国際ロボコンで金賞",
-            url="https://tech.example.com/robotics/20260810-suzuki",
-            source="産経新聞デジタル",
-            published=now - timedelta(days=11),
-            snippet=(
-                "東京工業大学大学院の鈴木翔太氏（報徳学園出身）が率いるチームが"
-                "国際ロボットコンテスト「RoboCup 2026 Bangkok」の自律移動部門で金賞を獲得した。"
-                "鈴木氏は「中高時代に科学部で培ったものづくりの基礎が原点」と語った。"
-            ),
-            kanto_score=_calc_kanto_score("東京工業大学 東京"),
-        ),
-        Article(
-            title="報徳学園OBの起業家・松本氏が神戸でフードテックスタートアップを設立",
-            url="https://startup.example.com/kobe/20260808-matsumoto",
-            source="神戸新聞",
-            published=now - timedelta(days=13),
-            snippet=(
-                "報徳学園出身の松本誠司氏（34）が神戸市内でフードテクノロジー企業「Hotoku Foods」を設立した。"
-                "同社は農業廃棄物を活用した代替タンパク質の製造技術を開発しており、"
-                "設立初年度からベンチャーキャピタルより3億円の資金調達に成功した。"
-            ),
-            kanto_score=0,
-        ),
-        Article(
-            title="法政大学陸上競技部・伊藤選手（報徳学園出身）、関東インカレ5000mで3位入賞",
-            url="https://athletics.example.com/kanto/20260805-ito",
-            source="月刊陸上競技",
-            published=now - timedelta(days=16),
-            snippet=(
-                "関東学生陸上競技連盟主催の関東インカレにおいて、法政大学陸上競技部の"
-                "伊藤涼太選手（報徳学園出身・2年）が5000m決勝で13分42秒の自己ベストを更新し3位に入賞した。"
-                "報徳学園時代は都大路（全国高校駅伝）でも区間賞を獲得している実力者。"
-            ),
-            kanto_score=_calc_kanto_score("法政大学 関東 東京"),
-        ),
-        Article(
-            title="報徳学園同窓会（関東支部）が8月例会を開催、卒業生100名超が参加",
+            title="報徳学園同窓会（報友会東京支部）が8月例会を開催、卒業生100名超が参加",
             url="https://alumni.example.com/kanto/20260803-meeting",
             source="報徳学園同窓会報",
             published=now - timedelta(days=18),
             snippet=(
-                "報徳学園同窓会関東支部（報友会東京支部）は8月3日に都内で例会を開催し、"
-                "卒業生・在校生保護者を含む105名が参加した。懇親会では首都圏で活躍する"
-                "若手卒業生による講演も行われ、大学・社会人問わず報徳ネットワークの"
-                "強固さを示す会となった。"
+                "報友会東京支部は8月3日に都内・赤坂のホールで例会を開催し、"
+                "卒業生・在校生保護者を含む105名が参加した。"
+                "懇親会では新井貴浩監督（カープ）への応援メッセージビデオが披露され大いに盛り上がった。"
+                "首都圏で活躍する若手卒業生3名による「報徳ネットワークと私の仕事」と題した"
+                "パネルディスカッションも行われた。"
             ),
-            kanto_score=_calc_kanto_score("関東 東京"),
+            kanto_score=_calc_kanto_score("東京 首都圏 関東"),
+            person_name="（複数OB参加）",
+            person_year="各期",
+            field="同窓会活動 ／ 報友会東京支部",
         ),
     ]
